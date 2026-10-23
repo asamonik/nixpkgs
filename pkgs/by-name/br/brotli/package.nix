@@ -22,6 +22,11 @@ stdenv.mkDerivation (finalAttrs: {
   };
 
   patches = [
+    # CVE-2026-111497 (Node2Shell); Node.js links to this shared library.
+    (fetchurl {
+      url = "https://github.com/google/brotli/commit/0ed4268a4401abcb4472096340477cf4af7d1a2b.patch";
+      hash = "sha256-gzyh1x7thb3jwhxjpu4xATh3Qbiqi5qCJRNAlKZ3thk=";
+    })
     # Fixes build on LoongArch64 & IA64
     # https://github.com/google/brotli/commit/e230f474b87134e8c6c85b630084c612057f253e
     (fetchurl {
